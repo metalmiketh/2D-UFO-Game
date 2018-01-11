@@ -1,3 +1,3 @@
-# 2D-UFO-GameFeel
+# 2D-UFO-Game
 
-free to make a pull request and make your own sprites or add code
+Feel free to fork and make your own sprites or add features
