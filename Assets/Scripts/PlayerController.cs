@@ -15,13 +15,13 @@ public class PlayerController : MonoBehaviour {
     public Text timerText;
     public Text healthText;
     public Text scoreText;
+    public Button quitButton;
 
     private Rigidbody2D rb2d;
     private int PickupsCollected;    
     private int CurrentSpeed;
     private float Score = 0.0f;
     private float Timer = 0.0f;
-    
 
 
     void Start()
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour {
         scoreText.text = "";
         SetHealthText();
         SetCountText();
+        quitButton.gameObject.SetActive(false);
     }
 
     void FixedUpdate()
@@ -57,6 +58,7 @@ public class PlayerController : MonoBehaviour {
                 health = 0;
                 winText.fontSize = 50;
                 SetHealthText();
+                quitButton.gameObject.SetActive(true);
             }
         }
         else
@@ -65,6 +67,7 @@ public class PlayerController : MonoBehaviour {
             timerText.text = "Level Completed in " + Timer.ToString("0.00") + " seconds";
             Score = health * (1 / Timer) * 1000;
             Score = (int)Score;
+            quitButton.gameObject.SetActive(true);
             if (Score > 999)
             {
                 scoreText.text = "Score: " + Score.ToString("0,000");
@@ -76,7 +79,6 @@ public class PlayerController : MonoBehaviour {
         }
               
     }
-
     
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -113,4 +115,3 @@ public class PlayerController : MonoBehaviour {
         }        
     }
 }
-
