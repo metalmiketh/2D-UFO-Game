@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     public int health;
     public float speed;
     public int numberOfPickups;
-    public int dps;
+    public int damage;
     public Text countText;
     public Text winText;
     public Text timerText;
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour {
 
             if (other.gameObject.CompareTag("Background"))
             {
-                health = health - dps;
+                health = health - damage;
                 SetHealthText();
             }
         }
@@ -80,13 +80,13 @@ public class PlayerController : MonoBehaviour {
             timerText.text = "Level Completed in " + timer.ToString("0.00") + " seconds";
             score = health * 1 / timer * 1000;
             score = (int)score;
-            scoreText.text = "Score: " + score.ToString();
+            scoreText.text = "Score: " + score.ToString("0,000");
         }
     }
 
     void SetHealthText()
     {
-        healthText.text = health.ToString();
+        healthText.text = "Health " + health.ToString();
     }
 }
 
